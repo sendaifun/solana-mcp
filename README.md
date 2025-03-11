@@ -1,6 +1,6 @@
 # Solana Agent Kit MCP Server
 
-[![npm version](https://badge.fury.io/js/solana-mpc.svg)](https://www.npmjs.com/package/solana-mpc)
+[![npm version](https://badge.fury.io/js/solana-mcp.svg)](https://www.npmjs.com/package/solana-mcp)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 A Model Context Protocol (MCP) server that provides onchain tools for Claude AI, allowing it to interact with the Solana blockchain through a standardized interface. This implementation is based on the Solana Agent Kit and enables AI agents to perform blockchain operations seamlessly.
@@ -29,10 +29,10 @@ The server implements the Model Context Protocol specification to standardize bl
 
 ```bash
 # Install globally
-npm install -g solana-mpc
+npm install -g solana-mcp
 
 # Or install locally in your project
-npm install solana-mpc
+npm install solana-mcp
 ```
 
 ### Option 2: Build from Source

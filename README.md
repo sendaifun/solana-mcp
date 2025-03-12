@@ -25,7 +25,13 @@ The server implements the Model Context Protocol specification to standardize bl
 
 ## Installation
 
-### Option 1: Install from npm (Recommended)
+### Option 1: Quick Install (Recommended)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/install.sh | bash -s -- --backup
+```
+
+### Option 2: Install from npm ( recommend for clients like Cursor/Cline)
 
 ```bash
 # Install globally
@@ -35,7 +41,7 @@ npm install -g solana-mcp
 npm install solana-mcp
 ```
 
-### Option 2: Build from Source
+### Option 3: Build from Source
 
 1. Clone this repository:
 ```bash

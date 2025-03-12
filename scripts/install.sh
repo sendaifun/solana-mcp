@@ -20,7 +20,7 @@ fi
 
 # Create temporary directory
 TEMP_DIR=$(mktemp -d)
-SCRIPT_URL="https://raw.githubusercontent.com/sendaifun/solana-agent-kit-mcp/main/scripts/init.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/init.sh"
 
 echo -e "${YELLOW}Downloading installation script...${NC}"
 if curl -fsSL "$SCRIPT_URL" -o "$TEMP_DIR/init.sh"; then

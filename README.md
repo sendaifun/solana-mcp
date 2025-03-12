@@ -28,13 +28,7 @@ The server implements the Model Context Protocol specification to standardize bl
 ### Option 1: Quick Install (Recommended)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/install.sh | bash -s -- --backup
-```
-
-Or if you prefer to inspect the script first:
-
-```bash
-# Download and inspect
+# Download the installation script
 curl -fsSL https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/install.sh -o solana-mcp-install.sh
 
 # Make it executable and run

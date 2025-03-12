@@ -31,6 +31,21 @@ The server implements the Model Context Protocol specification to standardize bl
 curl -fsSL https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/install.sh | bash -s -- --backup
 ```
 
+Or if you prefer to inspect the script first:
+
+```bash
+# Download and inspect
+curl -fsSL https://raw.githubusercontent.com/sendaifun/solana-mcp/main/scripts/install.sh -o solana-mcp-install.sh
+
+# Make it executable and run
+chmod +x solana-mcp-install.sh && ./solana-mcp-install.sh --backup
+```
+
+This will start an interactive installation process that will guide you through:
+- Setting up Node.js if needed
+- Configuring your Solana RPC URL and private key
+- Setting up the Claude Desktop integration
+
 ### Option 2: Install from npm ( recommend for clients like Cursor/Cline)
 
 ```bash

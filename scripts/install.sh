@@ -27,11 +27,14 @@ if curl -fsSL "$SCRIPT_URL" -o "$TEMP_DIR/init.sh"; then
     chmod +x "$TEMP_DIR/init.sh"
     echo -e "${GREEN}Download successful!${NC}"
     
-    echo -e "\n${YELLOW}Press Enter to continue with installation or Ctrl+C to cancel...${NC}"
-    read
-    
-    # Run the script
-    bash "$TEMP_DIR/init.sh" "$@"
+    # Run the script with --yes flag if being piped
+    if [ ! -t 0 ]; then
+        bash "$TEMP_DIR/init.sh" "$@" --yes
+    else
+        echo -e "\n${YELLOW}Press Enter to continue with installation or Ctrl+C to cancel...${NC}"
+        read
+        bash "$TEMP_DIR/init.sh" "$@"
+    fi
     
     # Cleanup
     rm -rf "$TEMP_DIR"

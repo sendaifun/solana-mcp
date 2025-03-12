@@ -39,8 +39,8 @@ npm install solana-mcp
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/sendaifun/solana-mcp-server
-cd solana-mcp-server
+git clone https://github.com/sendaifun/solana-mcp
+cd solana-mcp
 ```
 
 2. Install dependencies:

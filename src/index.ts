@@ -34,7 +34,6 @@ async function main() {
       process.env.RPC_URL as string,
       {
         OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
-        PERPLEXITY_API_KEY: process.env.PERPLEXITY_API_KEY || "",
       }
     );
 
@@ -44,6 +43,7 @@ async function main() {
       GET_PRICE: ACTIONS.FETCH_PRICE_ACTION,
       WALLET_ADDRESS: ACTIONS.WALLET_ADDRESS_ACTION,
       BALANCE: ACTIONS.BALANCE_ACTION,
+      TOKEN_BALANCES: ACTIONS.TOKEN_BALANCES_ACTION,
       TRANSFER: ACTIONS.TRANSFER_ACTION,
       MINT_NFT: ACTIONS.MINT_NFT_ACTION,
       TRADE: ACTIONS.TRADE_ACTION,
@@ -51,7 +51,6 @@ async function main() {
       RESOLVE_DOMAIN: ACTIONS.RESOLVE_SOL_DOMAIN_ACTION,
       GET_TPS: ACTIONS.GET_TPS_ACTION,
     };
-
     // Start the MCP server with error handling
     await startMcpServer(mcp_actions, agent, {
       name: "solana-agent",
@@ -65,16 +64,5 @@ async function main() {
     process.exit(1);
   }
 }
-
-// Handle uncaught exceptions and rejections
-process.on("uncaughtException", (error) => {
-  console.error("Uncaught Exception:", error);
-  process.exit(1);
-});
-
-process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection at:", promise, "reason:", reason);
-  process.exit(1);
-});
 
 main();

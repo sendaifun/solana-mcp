@@ -4,6 +4,7 @@ import { ACTIONS, SolanaAgentKit, startMcpServer, createMcpServer } from "solana
 import * as dotenv from "dotenv";
 import express, { Request, Response } from "express";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ async function startMcpServerWithSse(
   port: number = 3000
 ) {
   const app = express();
-  
+  app.use(cors());
   // Store active transport instances
   const transports: { [sessionId: string]: SSEServerTransport } = {};
   

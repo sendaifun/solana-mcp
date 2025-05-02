@@ -8,6 +8,9 @@ dependencies:
   '@modelcontextprotocol/sdk':
     specifier: ^1.9.0
     version: 1.9.0
+  cors:
+    specifier: ^2.8.5
+    version: 2.8.5
   dotenv:
     specifier: ^16.4.7
     version: 16.5.0
@@ -19,6 +22,9 @@ dependencies:
     version: 1.4.9(@noble/hashes@1.7.2)(@solana/buffer-layout@4.0.1)(@types/node@22.14.1)(arweave@1.15.7)(borsh@0.7.0)(buffer@6.0.1)(fastestsmallesttextencoderdecoder@1.0.22)(got@11.8.6)(react@19.1.0)(sodium-native@3.4.1)(typescript@5.8.3)(ws@8.18.1)
 
 devDependencies:
+  '@types/cors':
+    specifier: ^2.8.17
+    version: 2.8.17
   '@types/express':
     specifier: ^5.0.1
     version: 5.0.1
@@ -4978,6 +4984,12 @@ packages:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
       '@types/node': 22.14.1
+
+  /@types/cors@2.8.17:
+    resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
+    dependencies:
+      '@types/node': 22.14.1
+    dev: true
 
   /@types/diff-match-patch@1.0.36:
     resolution: {integrity: sha512-xFdR6tkm0MWvBfO8xXCSsinYxHcqkQUlcHeSpMC2ukzOb6lwQAfDmW+Qt0AvlGd8HpsS28qKsB+oPeJn9I39jg==}

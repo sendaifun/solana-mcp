@@ -28,10 +28,15 @@
   "author": "sendaifun",
   "license": "MIT",
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "express": "^5.1.0",
     "solana-agent-kit": "1.4.9"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.13.4",
     "typescript": "^5.7.3"
   },

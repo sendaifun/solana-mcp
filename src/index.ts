@@ -1,8 +1,13 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
-import { ACTIONS, SolanaAgentKit, startMcpServer, createMcpServer } from "solana-agent-kit";
+import { SolanaAgentKit, KeypairWallet, type Action } from "solana-agent-kit";
+import TokenPlugin from "@solana-agent-kit/plugin-token";
+import DefiPlugin from "@solana-agent-kit/plugin-defi";
+import { startMcpServer, createMcpServer } from "@solana-agent-kit/adapter-mcp";
 import * as dotenv from "dotenv";
-import express, { Request, Response } from "express";
+import { Keypair } from "@solana/web3.js";
+import bs58 from "bs58";
+import express, { type Request, type Response } from "express";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import cors from "cors";
 
@@ -44,7 +49,7 @@ async function startMcpServerWithSse(
   // SSE endpoint for client connections
   app.get("/sse", async (_req: Request, res: Response) => {
     console.log("Received connection on /sse");
-    const transport = new SSEServerTransport('/messages', res);
+    const transport = new SSEServerTransport("/messages", res);
 
     // Store the transport for this session
     transports[transport.sessionId] = transport;
@@ -68,7 +73,7 @@ async function startMcpServerWithSse(
     if (transport) {
       await transport.handlePostMessage(req, res);
     } else {
-      res.status(400).send('No transport found for sessionId');
+      res.status(400).send("No transport found for sessionId");
     }
   });
 
@@ -86,28 +91,24 @@ async function main() {
     validateEnvironment();
 
     // Initialize the agent with error handling
-    const agent = new SolanaAgentKit(
-      process.env.SOLANA_PRIVATE_KEY as string,
-      process.env.RPC_URL as string,
-      {
-        OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
-      }
+    const decodedPrivateKey = bs58.decode(
+      process.env.SOLANA_PRIVATE_KEY as string
+    );
+    const keypair = Keypair.fromSecretKey(decodedPrivateKey);
+    const keypairWallet = new KeypairWallet(
+      keypair,
+      process.env.RPC_URL as string
     );
 
-    const mcp_actions = {
-      GET_ASSET: ACTIONS.GET_ASSET_ACTION,
-      DEPLOY_TOKEN: ACTIONS.DEPLOY_TOKEN_ACTION,
-      GET_PRICE: ACTIONS.FETCH_PRICE_ACTION,
-      WALLET_ADDRESS: ACTIONS.WALLET_ADDRESS_ACTION,
-      BALANCE: ACTIONS.BALANCE_ACTION,
-      TOKEN_BALANCES: ACTIONS.TOKEN_BALANCES_ACTION,
-      TRANSFER: ACTIONS.TRANSFER_ACTION,
-      MINT_NFT: ACTIONS.MINT_NFT_ACTION,
-      TRADE: ACTIONS.TRADE_ACTION,
-      REQUEST_FUNDS: ACTIONS.REQUEST_FUNDS_ACTION,
-      RESOLVE_DOMAIN: ACTIONS.RESOLVE_SOL_DOMAIN_ACTION,
-      GET_TPS: ACTIONS.GET_TPS_ACTION,
-    };
+    const agent = new SolanaAgentKit(keypairWallet, keypairWallet.rpcUrl, {})
+      .use(TokenPlugin)
+      .use(DefiPlugin);
+
+    const mcp_actions: Record<string, Action> = {};
+
+    for (const action of agent.actions) {
+      mcp_actions[action.name] = action;
+    }
 
     const serverOptions = {
       name: "solana-agent",
@@ -116,7 +117,7 @@ async function main() {
 
     // Check if PORT environment variable exists to determine whether to use SSE
     if (process.env.PORT) {
-      const port = parseInt(process.env.PORT, 10);
+      const port = Number.parseInt(process.env.PORT, 10);
       console.log(`Starting MCP server with SSE on port ${port}`);
       await startMcpServerWithSse(mcp_actions, agent, serverOptions, port);
     } else {

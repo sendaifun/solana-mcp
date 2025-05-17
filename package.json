@@ -1,14 +1,14 @@
 {
   "name": "solana-mcp",
   "version": "1.0.0",
-  "description": "A Model Context Protocol server for interacting with the Solana blockchain, powered by the [Solana Agent Kit](https://github.com/sendaifun/solana-agent-kit)",
+  "description": "A Model Context Protocol server for interacting with the Solana blockchain, powered by the Solana Agent Kit (https://github.com/sendaifun/solana-agent-kit)",
   "main": "build/index.js",
   "type": "module",
   "bin": {
     "solana-mcp": "./build/index.js"
   },
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "build": "tsc",
     "start": "node build/index.js",
     "dev": "tsx watch src/index.ts"
   },
@@ -28,13 +28,17 @@
   "author": "sendaifun",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "solana-agent-kit": "1.4.9",
-    "zod": "^3.24.2"
+    "express": "^5.1.0",
+    "solana-agent-kit": "1.4.9"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.13.4",
+    "tsx": "^4.19.4",
     "typescript": "^5.7.3"
   },
   "packageManager": "pnpm@9.14.2"

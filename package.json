@@ -30,8 +30,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.11.4",
     "@solana-agent-kit/adapter-mcp": "^2.0.4",
-    "@solana-agent-kit/plugin-defi": "2.0.4",
-    "@solana-agent-kit/plugin-token": "2.0.4",
+    "@solana-agent-kit/plugin-god-mode": "^0.0.1",
     "@solana/web3.js": "^1.98.2",
     "bs58": "^6.0.0",
     "cors": "^2.8.5",

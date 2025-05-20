@@ -1,9 +1,8 @@
 // #!/usr/bin/env node
 
 import { SolanaAgentKit, KeypairWallet, type Action } from "solana-agent-kit";
-import TokenPlugin from "@solana-agent-kit/plugin-token";
-import DefiPlugin from "@solana-agent-kit/plugin-defi";
 import { startMcpServer, createMcpServer } from "@solana-agent-kit/adapter-mcp";
+import GodModePlugin from "@solana-agent-kit/plugin-god-mode";
 import * as dotenv from "dotenv";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58";
@@ -101,8 +100,7 @@ async function main() {
     );
 
     const agent = new SolanaAgentKit(keypairWallet, keypairWallet.rpcUrl, {})
-      .use(TokenPlugin)
-      .use(DefiPlugin);
+      .use(GodModePlugin);
 
     const mcp_actions: Record<string, Action> = {};
 
@@ -111,7 +109,7 @@ async function main() {
     }
 
     const serverOptions = {
-      name: "solana-agent",
+      name: "sendai-agent",
       version: "0.0.1",
     };
 

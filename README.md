@@ -2,8 +2,15 @@
 
 [![npm version](https://badge.fury.io/js/solana-mcp.svg)](https://www.npmjs.com/package/solana-mcp)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+<a href="https://cloud.phala.network/features/mcp-hosting/solana-mcp-by-sendai-and-dark" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:16px;font-family:sans-serif;">
+  <img src="https://raw.githubusercontent.com/Phala-Network/mcp-hosting/refs/heads/main/assets/logs/phala.png" alt="Phala Logo" height="24" style="vertical-align:middle;margin-right:8px;"/>
+  <span style="color:#222;font-weight:600;">Check on Phala</span>
+</a>
 
 A Model Context Protocol (MCP) server that provides onchain tools for Claude AI, allowing it to interact with the Solana blockchain through a standardized interface. This implementation is based on the Solana Agent Kit and enables AI agents to perform blockchain operations seamlessly.
+
+
+
 
 ## Overview
 

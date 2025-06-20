@@ -29,14 +29,17 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.11.4",
+    "@privy-io/server-auth": "^1.27.4",
     "@solana-agent-kit/adapter-mcp": "^2.0.4",
-    "@solana-agent-kit/plugin-god-mode": "^0.0.1",
+    "@solana-agent-kit/plugin-defi": "^2.0.6",
+    "@solana-agent-kit/plugin-nft": "^2.0.6",
+    "@solana-agent-kit/plugin-token": "^2.0.7",
     "@solana/web3.js": "^1.98.2",
     "bs58": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "solana-agent-kit": "2.0.4"
+    "solana-agent-kit": "^2.0.8"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
